@@ -1,0 +1,39 @@
+subprocess.run 是一個用於執行系統指令或外部程式的高級接口。它允許開發者執行指令、等待指令完成、檢查指令的退出狀態碼，並選擇性地取得指令的標準輸出和標準錯誤。
+
+subprocess.run(args, *, stdin=None, input=None, stdout=None, stderr=None, capture_output=False, shell=False, cwd=None, timeout=None, check=False, encoding=None, errors=None, text=None, env=None, universal_newlines=None)
+
+args：這是要執行的指令及其參數，通常以清單形式提供，例如 ['ls', '-l']。
+stdin、stdout、stderr：分別指定標準輸入、標準輸出和標準錯誤的處理方式。
+capture_output：若設定為 True，將捕獲標準輸出和標準錯誤。
+shell：若設定為 True，指令將透過 shell 執行（例如 bash 或 cmd）。
+cwd：設定指令執行的當前工作目錄。
+timeout：設定指令執行的超時時間（以秒為單位）。
+check：若設定為 True，當指令回傳非零退出狀態時將拋出 CalledProcessError。
+encoding 和 errors：設定標準輸入、輸出和錯誤的編碼和錯誤處理。
+text 或 universal_newlines：若設定為 True，將輸入和輸出視為文字流，而非位元組流。
+env：提供一個字典來設定環境變數。
+
+ex1: 執行一個簡單的指令
+import subprocess
+result = subprocess.run(['ls', '-l'], capture_output=True, text=True)
+print(result.stdout)
+
+ex2: 檢查指令的退出狀態
+import subprocess
+result = subprocess.run(['ls', '-l', '/testfolder'], capture_output=True, text=True)
+if result.returncode != 0:
+    print("Error:", result.stderr)
+else:
+    print(result.stdout)
+
+ex3: 在 shell 中執行指令
+import subprocess
+result = subprocess.run('echo $HOME', shell=True, capture_output=True, text=True)
+print(result.stdout)
+
+ex4: 處理指令超時
+import subprocess
+try:
+    result = subprocess.run(['sleep', '5'], timeout=2)
+except subprocess.TimeoutExpired:
+    print("Command timed out")
