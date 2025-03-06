@@ -1,0 +1,21 @@
+subprocess.Popen 用法與範例
+用於啟動和管理子行程
+1. 執行外部指令或腳本。
+2. 在執行指令時進行進階的 I/O 操作，如管道通訊。
+3. 取得子行程的回傳碼。
+4. 在非同步或同步模式下執行子行程。
+
+class subprocess.Popen( args,
+      bufsize=0,
+      executable=None,
+      stdin=None,
+      stdout=None,
+      stderr=None,
+      preexec_fn=None,
+      close_fds=False,
+      shell=False,
+      cwd=None,
+      env=None,
+      universal_newlines=False,
+      startupinfo=None,
+      creationflags=0)
