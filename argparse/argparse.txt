@@ -1,0 +1,34 @@
+import argparse
+parser = argparse.ArgumentParser()
+
+prefix_chars
+Most command-line options will use - as the prefix, e.g. -f/--foo. Parsers that need to support different or additional prefix characters,
+e.g. for options like +f or /foo, may specify them using the prefix_chars= argument to the ArgumentParser constructor:
+
+add_help
+By default, ArgumentParser objects add an option which simply displays the parser’s help message. If -h or --help is supplied at the command line, the ArgumentParser help will be printed.
+
+
+
+1 一些不錯的參數
+prog: 程式的名稱，預設是檔名
+description: 描述程式的資訊，會在所有參數說明的前面
+epilog: 描述程式的資訊，會在所有參數說明的後面
+
+example:
+parser = argparser.Argument(prog='PROG', description='Tutorial')
+# 印出 help 的內容
+parser.print_help()
+
+result:
+usage: PROG [-h]
+Tutorial
+optional arguments:
+  -h, --help  show this help message and exit
+
+2. 參數的加入 ArgumentParser.add_argument
+example:
+parser = argparse.ArgumentParser()
+parser.add_argument('--foo', help='foo help')
+# 回傳變數的剖析
+parser.parse_args()
