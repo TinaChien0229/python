@@ -1,0 +1,3 @@
+if sys.platform.startswith("linux"):
+
+sys.stdout.flush()  #刷新stdout
