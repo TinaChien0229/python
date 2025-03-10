@@ -1,1 +1,3 @@
-
+os.path.normpath(
+            os.path.abspath(packages_path_list[index])
+        )
