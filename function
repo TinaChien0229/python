@@ -5,3 +5,13 @@ setattr(object, name, value)
 object -- 对象。
 name -- 字符串，对象属性。
 value -- 属性值。
+============================================
+import json
+
+# Open and read the JSON file
+with open('data.json', 'r') as file:
+    data = json.load(file)
+
+# Print the data
+print(data)
+==========================================
